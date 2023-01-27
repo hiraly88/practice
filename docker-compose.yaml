@@ -1,0 +1,17 @@
+version: 'v1'
+services:
+  app:
+    depends_on:
+      - db
+    build: .
+    ports: 
+      - '4200:4200'
+    volumes:
+      - '/app/node_modules'
+    container_name: app_container
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:  
+      - '3306:3306'
